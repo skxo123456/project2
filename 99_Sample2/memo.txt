@@ -201,3 +201,4 @@ select m.email, p.pname, p.pqty, o.totalprice
 from (market m join ord o on m.no = o.no) join prod p
 on o.pnum = p.pnum
 where m.email = 'admin';
+--asdasd
