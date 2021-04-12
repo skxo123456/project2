@@ -1,0 +1,203 @@
+-- 회원 테이블
+drop sequence fm_seq;
+create sequence fm_seq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+drop table market;
+create table market(
+no number primary key,
+email varchar2(50),
+password varchar2(50),
+joindate date default sysdate 				
+);
+
+insert into market(no,email,password,joindate)
+values(fm_seq.nextval,'admin','1234',sysdate);
+
+insert into market(no,email,password,joindate)
+values(fm_seq.nextval,'kim@naver.com','1234',sysdate);
+
+commit;
+
+select * from market;
+
+
+-- 카테고리 테이블
+drop sequence cat_seq;
+create sequence cat_seq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+drop table cat;
+create table cat(
+cnum number primary key,
+ccode varchar2(50) not null,
+cname varchar2(50) not null,
+cref number default 0
+);
+
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','디자인',1);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','로고·브랜딩',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','상세·이벤트페이지',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','인쇄·홍보물',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','제품·패키지',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','PPT·인포그래픽',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','웹·모바일디자인',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','블로그·SNS·썸네일',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','일러스트·캐리커쳐',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','웹툰·캐릭터·이모티콘',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','공간디자인',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','포토샵·파일변환',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','북·앨범디자인',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','캘리그라피·폰트',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','게임·VR',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','의류디자인',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','간판·시공',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','기타',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'A','파견·상주',0);
+
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','IT·프로그래밍',1);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','워드프레스',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','웹사이트개발',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','쇼핑몰·커머스',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','모바일앱',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','임베디드HW·SW',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','게임',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','데이터베이스',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','데이터분석·리포트',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','블록체인·보안',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','서버·기술지원',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','QA·테스트',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','파일변환',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','챗봇',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','기타',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'B','파견·상주',0);
+
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'C','영상·사진·음향',1);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'C','영상촬영·편집',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'C','유튜브제작',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'C','애니메이션',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'C','3D·VR',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'C','인트로·로고',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'C','사진촬영',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'C','더빙·녹음',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'C','음악·사운드',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'C','모델·MC',0);
+insert into cat(cnum,ccode,cname,cref)
+values(cat_seq.nextval,'C','기타',0);
+
+commit;
+
+select * from cat;
+
+select cname from cat where cref=1 order by cnum asc;
+
+select cname from cat where cref=0 and ccode='C' order by cnum asc;
+
+
+-- 상품 테이블
+drop sequence prod_seq;
+create sequence prod_seq 
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+drop table prod;
+create table prod(
+pnum int not null primary key,
+pname varchar2(50) not null,
+pcode varchar2(50) not null,
+pcompany varchar2(50),
+pimage varchar2(50),
+pqty int default 0,
+pworkdate int default 0,
+price int default 0,
+pcontents varchar2(500),
+point int default 0,
+pinputdate varchar2(50)
+);
+
+commit;
+
+select * from prod;
+
+
+-- 매출 주문 테이블
+drop sequence ord_seq ;
+create sequence ord_seq 
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+drop table ord;
+create table ord(
+ordnum number, -- 주문번호
+no number, -- 회원번호
+pnum number, -- 상품번호
+totalprice number -- 전체가격
+saleprice number -- 전체할인가격
+);
+
+commit;
+
+-- B. 'healthy table 과 ord table 의 교집합(결과물 테이블)' 과 prodprod table 의 교집합 (inner 는 생략)
+select m.email, p.pname, p.pqty, o.totalprice
+from (market m join ord o on m.no = o.no) join prod p
+on o.pnum = p.pnum
+where m.email = 'admin';

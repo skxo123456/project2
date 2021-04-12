@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="fm.category">
+<!-- FreelancerMarket.xml -->
+	
+	<!-- 전체조회 -->
+	<select id="GetCatList" parameterType="hashmap" resultType="MyCat">
+		select * from cat
+		<if test="whatColumn=='pname'">
+			where pname like #{keyword}
+		</if>
+		<if test="whatColumn=='ref1'">
+			where ref1 like #{keyword}
+		</if>
+		order by num asc
+	</select>
+	
+	<!-- 전체글갯수 -->
+	<select id="GetTotalCount" parameterType="hashmap" resultType="int">
+		select count(*) from cat
+		<if test="whatColumn=='pname'">
+			where pname like #{keyword}
+		</if>
+		<if test="whatColumn=='ref1'">
+			where ref1 like #{keyword}
+		</if>
+	</select>
+	
+	<!-- 삽입(총49컬럼 중 43컬럼 추가) -->
+	<insert id="InsertCat" parameterType="MyCat">
+		insert into cat(nickname,email,num,pname,ref1,ref2,standard,deluxe,premium,smain,dmain,pmain,scontent,dcontent,pcontent,svat,dvat,pvat,sdate,ddate,pdate,scountsu,dcountsu,pcountsu,scountsi,dcountsi,pcountsi,sorigin,dorigin,porigin,sdesign,ddesign,pdesign,spossible,dpossible,ppossible,sregist,dregist,pregist,servicecontent,mimgname,simgname,videoname,subcontent)
+		values(#{nickname},#{email},cat_seq.nextval,#{pname,jdbcType=VARCHAR},#{ref1,jdbcType=VARCHAR},#{ref2,jdbcType=VARCHAR},#{standard,jdbcType=VARCHAR},#{deluxe,jdbcType=VARCHAR},#{premium,jdbcType=VARCHAR},#{smain,jdbcType=VARCHAR},#{dmain,jdbcType=VARCHAR},#{pmain,jdbcType=VARCHAR},#{scontent,jdbcType=VARCHAR},#{dcontent,jdbcType=VARCHAR},#{pcontent,jdbcType=VARCHAR},#{svat,jdbcType=VARCHAR},#{dvat,jdbcType=VARCHAR},#{pvat,jdbcType=VARCHAR},#{sdate,jdbcType=VARCHAR},#{ddate,jdbcType=VARCHAR},#{pdate,jdbcType=VARCHAR},#{scountsu,jdbcType=VARCHAR},#{dcountsu,jdbcType=VARCHAR},#{pcountsu,jdbcType=VARCHAR},#{scountsi,jdbcType=VARCHAR},#{dcountsi,jdbcType=VARCHAR},#{pcountsi,jdbcType=VARCHAR},#{sorigin,jdbcType=VARCHAR},#{dorigin,jdbcType=VARCHAR},#{porigin,jdbcType=VARCHAR},#{sdesign,jdbcType=VARCHAR},#{ddesign,jdbcType=VARCHAR},#{pdesign,jdbcType=VARCHAR},#{spossible,jdbcType=VARCHAR},#{dpossible,jdbcType=VARCHAR},#{ppossible,jdbcType=VARCHAR},#{sregist,jdbcType=VARCHAR},#{dregist,jdbcType=VARCHAR},#{pregist,jdbcType=VARCHAR},#{servicecontent,jdbcType=VARCHAR},#{mimgname,jdbcType=VARCHAR},#{simgname,jdbcType=VARCHAR},#{videoname,jdbcType=VARCHAR},#{subcontent,jdbcType=VARCHAR})
+	</insert>
+	
+	<!-- 카테고리전체조회 -->
+	<select id="SelectRef" resultType="MyRef">
+		select * from ref order by num asc
+	</select>
+	
+	<!-- 상세보기 -->
+	<select id="DetailCat" parameterType="hashmap" resultType="MyCat">
+		select * from cat where num=#{num}
+	</select>
+	
+</mapper>
